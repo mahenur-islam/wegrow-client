@@ -1,0 +1,39 @@
+[
+    {
+      "name": "Basic Package",
+      "color":"#7ED7C1",
+      "price": 9.99,
+      "description": "Ideal for small teams getting started with asset management.",
+      "features": [
+        "Up to 5 team members",
+        "Basic asset tracking",
+        "Email support",
+        "Monthly asset usage report"
+      ]
+    },
+    {
+      "name": "Standard Package",
+      "color":"#B4BDFF",
+      "price": 19.99,
+      "description": "Perfect for growing teams with additional asset management needs.",
+      "features": [
+        "Up to 15 team members",
+        "Advanced asset tracking and categorization",
+        "Priority email support",
+        "Monthly and yearly asset usage reports"
+      ]
+    },
+    {
+      "name": "Premium Package",
+      "color":"#EBE3D5",
+      "price": 29.99,
+      "description": "Designed for larger teams with comprehensive asset management requirements.",
+      "features": [
+        "Up to 30 team members",
+        "Full-featured asset tracking with analytics",
+        "24/7 premium support",
+        "Customized reporting and data export"
+      ]
+    }
+  ]
+  
