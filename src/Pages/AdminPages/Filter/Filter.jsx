@@ -1,6 +1,6 @@
 import  { useState } from "react";
 
-const AssetList = () => {
+const Filter = () => {
   // State for filter options
   const [stockStatus, setStockStatus] = useState("all");
   const [assetType, setAssetType] = useState("all");
@@ -17,7 +17,7 @@ const AssetList = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-10 w-1/6 bg-gray-100 p-5 rounded-md">
+    <div className="flex flex-col space-y-10  bg-gray-100 p-5 rounded-md">
       {/* Stock Status Filter */}
       <div className="space-y-2 ">
         <label className="text-gray-700 dark:text-white font-semibold text-xl">Stock Status:</label>
@@ -97,4 +97,4 @@ const AssetList = () => {
   );
 };
 
-export default AssetList;
+export default Filter;

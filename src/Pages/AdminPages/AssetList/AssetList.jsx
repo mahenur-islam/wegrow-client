@@ -1,6 +1,7 @@
 import { Button, TextInput } from "flowbite-react";
 import Filter from "../Filter/Filter";
 import SortQuantity from "../SortQuantity/SortQuantity";
+import Products from "../Products/Products";
 
 const AssetList = () => {
   return (
@@ -25,17 +26,22 @@ const AssetList = () => {
         </div>
       </div>
 
-      {/* <------ Filter Section ------> */}
+      <div className="grid grid-cols-12 gap-5 mt-10">
+        {/* <------ Filter Section ------> */}
 
-      <div className="mt-10">
-        <Filter></Filter>
-      </div>
+        <div className="col-span-2 shadow-xl">
+          <Filter></Filter>
+        </div>
 
-    
-      {/* <------- Sorting Section ---------> */}
+        {/* <---------All Products ---------> */}
+        <div className="col-span-8 shadow-xl p-3">
+          <Products></Products>
+        </div>
+        {/* <------- Sorting Section ---------> */}
 
-      <div>
-        <SortQuantity></SortQuantity>
+        <div className="col-span-2 shadow-lg h-28 p-4 bg-red-100 rounded-lg">
+          <SortQuantity></SortQuantity>
+        </div>
       </div>
     </div>
   );

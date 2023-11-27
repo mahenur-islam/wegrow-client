@@ -11,7 +11,7 @@ const SortQuantity = () => {
   };
 
   return (
-    <div className="mb-4 w-48">
+    <div className="mb-4">
     <label htmlFor="sortOption" className="text-gray-700 dark:text-white block">
       Sort By Quantity:
     </label>
