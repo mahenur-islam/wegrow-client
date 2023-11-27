@@ -1,4 +1,4 @@
-import { Button, Table } from 'flowbite-react';
+import { Table } from 'flowbite-react';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 const Products = () => {
@@ -16,7 +16,7 @@ const Products = () => {
             </Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
-            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800 hover:bg-red-200">
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                 {'Apple MacBook Pro 17"'}
               </Table.Cell>
@@ -24,19 +24,6 @@ const Products = () => {
               <Table.Cell>Laptop</Table.Cell>
               <Table.Cell>$2999</Table.Cell>
               <Table.Cell>$2999</Table.Cell>
-              <Table.Cell className='flex gap-4'>
-              <RiDeleteBin6Line className='text-xl' />
-              <FaRegEdit className='text-xl'  />
-              </Table.Cell>
-            </Table.Row>
-            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                Microsoft Surface Pro
-              </Table.Cell>
-              <Table.Cell>White</Table.Cell>
-              <Table.Cell>Laptop PC</Table.Cell>
-              <Table.Cell>$1999</Table.Cell>
-              <Table.Cell>$1999</Table.Cell>
               <Table.Cell className='flex gap-4'>
               <RiDeleteBin6Line className='text-xl' />
               <FaRegEdit className='text-xl'  />
