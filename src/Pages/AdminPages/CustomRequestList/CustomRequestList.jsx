@@ -1,8 +1,9 @@
 import { Table } from "flowbite-react";
 
-const RequestList = () => {
+const CustomRequestList = () => {
   return (
-    <div className="overflow-x-auto">
+    <div className="min-h-[40vh] py-10">
+      <h1 className="text-xl text-center py-5">Custom Request</h1>
       <Table>
         <Table.Head>
           <Table.HeadCell>Asset name</Table.HeadCell>
@@ -26,8 +27,8 @@ const RequestList = () => {
             <Table.Cell>$2999</Table.Cell>
             <Table.Cell>$2999</Table.Cell>
             <Table.Cell className="grid grid-cols-2 gap-3 font-semibold">
-             <p className="text-green-500">Approve</p>
-             <p className="text-red-500">Delete</p>
+              <p className="text-green-500">Approve</p>
+              <p className="text-red-500">Delete</p>
             </Table.Cell>
           </Table.Row>
         </Table.Body>
@@ -36,4 +37,4 @@ const RequestList = () => {
   );
 };
 
-export default RequestList;
+export default CustomRequestList;

@@ -13,6 +13,8 @@ import TeamMember from "../Pages/EmployeePages/MyTeam/TeamMember/TeamMember";
 import AssetList from "../Pages/AdminPages/AssetList/AssetList";
 import AddAsset from "../Pages/AdminPages/AddAsset/AddAsset";
 import AllRequest from "../Pages/AdminPages/AllRequest/AllRequest";
+import CustomRequestList from "../Pages/AdminPages/CustomRequestList/CustomRequestList";
+import Signup from "../Pages/Signup/Signup";
 
   export const router = createBrowserRouter([
     {
@@ -26,6 +28,10 @@ import AllRequest from "../Pages/AdminPages/AllRequest/AllRequest";
         {
             path:'/login',
             element: <Login></Login>
+        },
+        {
+            path:'/signup',
+            element: <Signup></Signup>
         },
         {
             path:'/employeesignup',
@@ -58,6 +64,10 @@ import AllRequest from "../Pages/AdminPages/AllRequest/AllRequest";
         {
             path:'/allrequest',
             element: <AllRequest></AllRequest>
+        },
+        {
+            path:'/customrequestlist',
+            element: <CustomRequestList></CustomRequestList>
         },
         {
             path:'/assetlist',
