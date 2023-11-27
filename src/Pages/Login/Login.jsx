@@ -1,7 +1,11 @@
+import { Helmet} from "react-helmet-async";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 const Login = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-10">
+    <Helmet>
+      <title>weGrow | Login</title>
+    </Helmet>
     <div>
         <img src="https://i.ibb.co/r37rp7y/login2.png" className="h-[500px]"/>
     </div>
