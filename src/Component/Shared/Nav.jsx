@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
-import { Navbar } from "flowbite-react";
+import { Avatar, Button, Navbar } from "flowbite-react";
 import { IoHomeOutline } from "react-icons/io5";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 const Nav = () => {
+
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleLogout = ()=>{
+    logOut()
+    .then(()=>{
+
+    })
+    .catch(error => console.log(error))
+  }
+
   return (
     <div>
       <Navbar fluid rounded className="p-5 shadow-sm rounded-none">
@@ -22,7 +35,17 @@ const Nav = () => {
           </Navbar.Link>
           <Navbar.Link href="/employeesignup">Join as Employee</Navbar.Link>
           <Navbar.Link href="/adminsignup">Join as HR/Admin</Navbar.Link>
-          <Navbar.Link href="/login">Login</Navbar.Link>
+          {
+            user ? <>
+              <div className="flex justify-center items-center gap-3">
+                <p>{user?.displayName}</p>
+                <Avatar img={user.photoUrl} />
+                <Button outline onClick={handleLogout}>Logout</Button>
+              </div>
+              
+            </> : <Navbar.Link href="/login"><Button>Login</Button></Navbar.Link>
+          }
+          
         </Navbar.Collapse>
       </Navbar>
     </div>

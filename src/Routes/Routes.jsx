@@ -15,6 +15,7 @@ import AddAsset from "../Pages/AdminPages/AddAsset/AddAsset";
 import AllRequest from "../Pages/AdminPages/AllRequest/AllRequest";
 import CustomRequestList from "../Pages/AdminPages/CustomRequestList/CustomRequestList";
 import Signup from "../Pages/Signup/Signup";
+import PrivateRoute from "./PrivateRoute";
 
   export const router = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ import Signup from "../Pages/Signup/Signup";
         }, 
         {
             path:'/profile',
-            element: <Profile></Profile>
+            element: <PrivateRoute><Profile></Profile></PrivateRoute>
         },
         {
             path:'/customrequest',

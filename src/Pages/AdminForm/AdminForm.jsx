@@ -1,47 +1,87 @@
 import { Button, Label, Select, TextInput } from "flowbite-react";
+import { useForm } from "react-hook-form";
 import { HiMail } from "react-icons/hi";
 import { SiNamecheap } from "react-icons/si";
 import { BsCalendar2Date } from "react-icons/bs";
 import { FaEyeSlash } from "react-icons/fa";
 import { PiPasswordFill } from "react-icons/pi";
 import { BiLogoCodepen } from "react-icons/bi";
+import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
 const AdminForm = () => {
+  const {createUser, updateUserProfile} = useContext(AuthContext);
+  const navigate = useNavigate();
+  
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm()
+  const onSubmit = (data) => {
+    console.log(data)
+    createUser(data.email, data.password)
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      toast.success('User created successfully');
+      updateUserProfile(data.name, data.photoURL)
+      .then(()=>{
+        console.log('profile updated')
+        reset();
+        toast.success('successfully updated');
+        navigate('/')
+      })
+      .catch(error =>{
+        console.log(error)
+      })
+    })
+  }
+
+  
   return (
-    <div>
+    <>
+       <Helmet>
+        <title>weGrow | Admin Signup</title>
+      </Helmet>
       <div
         className="min-h-screen flex items-center justify-between px-20 py-10 bg-cover bg-center"
         style={{ backgroundImage: `url("https://i.ibb.co/0V9ntNr/1.png")` }}
       >
-        <form className="flex max-w-md flex-col gap-4 bg-white p-10 rounded-lg shadow-2xl shadow-red-300 w-[600px] ml-10">
+        <form className="flex max-w-md flex-col gap-4 bg-white p-10 rounded-lg shadow-2xl shadow-red-300 w-[600px] ml-10" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-xl md:text-2xl font-semibold">
-            Signup as Employee
+            Signup as HR/Admin
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="fullname" value="Full Name *" />
+                <Label htmlFor="name" value="Full Name *" />
               </div>
               <TextInput
-                id="name"
                 type="text"
                 icon={SiNamecheap}
                 placeholder=""
-                name="fullname"
-                required
+                name="name"
+                {...register('name', {required: true})}
               />
+              {errors.fullname && <span className="text-red-600">This field is required</span>}
+
             </div>
             <div>
               <div className="mb-2 block">
                 <Label htmlFor="companyName" value="Company Name *" />
               </div>
               <TextInput
-                id="name"
                 type="text"
                 icon={SiNamecheap}
                 placeholder=""
                 name="companyName"
-                required
+                {...register('companyName', {required:true})}
               />
+               {errors.companyName && <span className="text-red-600">This field is required</span>}
             </div>
           </div>
           <div>
@@ -49,13 +89,13 @@ const AdminForm = () => {
               <Label htmlFor="companyPhotoUrl" value="Company Logo *" />
             </div>
             <TextInput
-              id="name"
               type="text"
               icon={BiLogoCodepen}
               placeholder=""
               name="companyPhotoUrl"
-              required
+              {...register('companyPhotoUrl', {required:true})}
             />
+             {errors.companyPhotoUrl && <span className="text-red-600">This field is required</span>}
           </div>
           <div>
             <div className="mb-2 block">
@@ -66,8 +106,9 @@ const AdminForm = () => {
               type="email"
               icon={HiMail}
               placeholder="name@flowbite.com"
-              required
+              {...register('email', {required:true})}
             />
+             {errors.email && <span className="text-red-600">This field is required</span>}
           </div>
           <div>
             <div className="mb-2 block">
@@ -79,9 +120,12 @@ const AdminForm = () => {
               placeholder="password"
               name="password"
               rightIcon={FaEyeSlash}
-              required
+              {...register('password', {required:true, minLength:6, maxLength:20,pattern: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/})}
             />
-          </div>
+               {errors.password?.type === 'required' && <span className="text-red-600">password is required</span>}
+               {errors.password?.type === 'minLength' && <span className="text-red-600">password should be at least 6 characters</span>}
+               {errors.password?.type === 'pattern' && <span className="text-red-600">password should have an uppercase, a lowarcase, a symbole and a number</span>}
+          </div> 
           <div>
             <div className="mb-2 block">
               <Label htmlFor="birthDate" value="Date of Birth *" />
@@ -89,28 +133,33 @@ const AdminForm = () => {
             <TextInput
               type="date"
               icon={BsCalendar2Date}
-              name="date"
+              name="birthDate"
               placeholder=""
-              required
+              {...register('birthDate', {required:true})}
             />
+             {errors.birthDate && <span className="text-red-600">This field is required</span>}
           </div>
           <div className="max-w-md">
             <div className="mb-2 block">
               <Label htmlFor="countries" value="Select package" />
             </div>
-            <Select id="package" required>
+            <Select  {...register('package', {required:true})} >
               <option>Basic</option>
               <option>Standard</option>
               <option>Premium</option>
             </Select>
+            {errors.package && <span className="text-red-600">This field is required</span>}
           </div>
           <Button type="submit" outline>
             Signup
           </Button>
+          <h2>Already have an account? <Link to='/login'>Login</Link> Now!</h2>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
 export default AdminForm;
+
+
