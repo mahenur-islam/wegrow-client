@@ -4,13 +4,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 const Login = () => {
 
   const {signIn} = useContext(AuthContext)
   const navigate = useNavigate();
   const location =  useLocation();
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/adminhome";
 
   const handleLogIn = (e)=>{
     e.preventDefault();
@@ -72,6 +73,7 @@ const Login = () => {
             </h1>
           </div>
           <Button type="submit">Submit</Button>
+          <SocialLogin></SocialLogin>
         </form>
       </div>
     </div>

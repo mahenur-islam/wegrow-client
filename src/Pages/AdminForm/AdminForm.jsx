@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 const AdminForm = () => {
   const {createUser, updateUserProfile} = useContext(AuthContext);
   const navigate = useNavigate();
@@ -153,6 +154,9 @@ const AdminForm = () => {
           <Button type="submit" outline>
             Signup
           </Button>
+          <div>
+                <SocialLogin/>
+          </div>
           <h2>Already have an account? <Link to='/login'>Login</Link> Now!</h2>
         </form>
       </div>

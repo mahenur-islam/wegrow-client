@@ -1,19 +1,22 @@
-import { Link } from "react-router-dom";
-import { Avatar, Button, Navbar } from "flowbite-react";
+import { Link, NavLink } from "react-router-dom";
+import { Navbar } from "flowbite-react";
+import { IoMdPeople } from "react-icons/io";
+import { FaPeopleRoof } from "react-icons/fa6";
 import { IoHomeOutline } from "react-icons/io5";
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+// import { useContext } from "react";
+// import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 const Nav = () => {
 
-  const {user, logOut} = useContext(AuthContext);
+  // const {user, logOut} = useContext(AuthContext);
+  // console.log(user)
 
-  const handleLogout = ()=>{
-    logOut()
-    .then(()=>{
+  // const handleLogout = ()=>{
+  //   logOut()
+  //   .then(()=>{
 
-    })
-    .catch(error => console.log(error))
-  }
+  //   })
+  //   .catch(error => console.log(error))
+  // }
 
   return (
     <div>
@@ -30,21 +33,21 @@ const Nav = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Navbar.Link href="/" active className="flex justify-center items-center gap-1">
+          <NavLink to="/" active= 'true' className="flex justify-center items-center gap-1">
           <IoHomeOutline className="text-lg" /> Home
-          </Navbar.Link>
-          <Navbar.Link href="/employeesignup">Join as Employee</Navbar.Link>
-          <Navbar.Link href="/adminsignup">Join as HR/Admin</Navbar.Link>
-          {
+          </NavLink>
+          <NavLink to="/employeesignup" className="flex justify-center items-center gap-1"><IoMdPeople className="text-xl" />Join as Employee</NavLink>
+          <NavLink to="/adminsignup" className="flex justify-center items-center gap-1"><FaPeopleRoof className="text-xl"  />Join as HR/Admin</NavLink>
+          {/* <NavLink to="/login" className="flex justify-center items-center gap-1"><Button>Login</Button></NavLink> */}
+          {/* {
             user ? <>
               <div className="flex justify-center items-center gap-3">
                 <p>{user?.displayName}</p>
-                <Avatar img={user.photoUrl} />
                 <Button outline onClick={handleLogout}>Logout</Button>
               </div>
               
             </> : <Navbar.Link href="/login"><Button>Login</Button></Navbar.Link>
-          }
+          } */}
           
         </Navbar.Collapse>
       </Navbar>
