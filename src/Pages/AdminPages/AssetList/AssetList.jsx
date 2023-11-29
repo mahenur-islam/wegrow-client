@@ -2,8 +2,23 @@ import { Button, TextInput } from "flowbite-react";
 import Filter from "../Filter/Filter";
 import SortQuantity from "../SortQuantity/SortQuantity";
 import Products from "../Products/Products";
+import { useState } from "react";
 
 const AssetList = () => {
+  const [filters, setFilters] = useState({ stockStatus: "all", assetType: "all" });
+  const [sortOption, setSortOption] = useState("default");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+  const handleSortChange = (newSortOption) => {
+    setSortOption(newSortOption);
+  };
+
+  const handleSearch = () => {
+   console.log("Search query:", searchQuery);
+  };
   return (
     <div>
       {/* <------ Searchbar Section ------> */}
@@ -20,27 +35,27 @@ const AssetList = () => {
               sizing="md"
               placeholder="Search here . . ."
               className="w-96 shadow-xl "
+              value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <Button>Search</Button>
+            <Button  onClick={handleSearch}>Search</Button>
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-12 gap-5 mt-10">
         {/* <------ Filter Section ------> */}
+        <div className="col-span-2 shadow-xl max-h-[40vh]">
+        <Filter onFilterChange={handleFilterChange}></Filter>
+      </div>
+      <div className="col-span-8 shadow-xl p-3">
+        <Products filters={filters} sortOption={sortOption}></Products>
+      </div>
 
-        <div className="col-span-2 shadow-xl">
-          <Filter></Filter>
-        </div>
-
-        {/* <---------All Products ---------> */}
-        <div className="col-span-8 shadow-xl p-3">
-          <Products></Products>
-        </div>
         {/* <------- Sorting Section ---------> */}
 
         <div className="col-span-2 shadow-lg h-28 p-4 bg-red-100 rounded-lg">
-          <SortQuantity></SortQuantity>
+          <SortQuantity filters={filters} onSortChange={handleSortChange} searchQuery={searchQuery}></SortQuantity>
         </div>
       </div>
     </div>

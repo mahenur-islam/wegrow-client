@@ -1,0 +1,83 @@
+[
+    {
+      "product_name": "Laptop",
+      "type": "non-returnable",
+      "status": "available",
+      "quantity":2,
+      "date": "2023-01-15",
+      "price": 1200.00
+    },
+    {
+      "product_name": "Headphones",
+      "type": "returnable",
+      "status": "out-of-stock",
+      "quantity":4,
+      "date": "2023-02-05",
+      "price": 50.99
+    },
+    {
+      "product_name": "Coffee Maker",
+      "type": "non-returnable",
+      "status": "available",
+      "quantity":6,
+      "date": "2023-03-10",
+      "price": 80.50
+    },
+    {
+      "product_name": "Smartphone",
+      "type": "returnable",
+      "status": "available",
+      "quantity":7,
+      "date": "2023-04-22",
+      "price": 600.00
+    },
+    {
+      "product_name": "Desk Chair",
+      "type": "non-returnable",
+      "status": "out-of-stock",
+      "quantity":2,
+      "date": "2023-05-18",
+      "price": 150.00
+    },
+    {
+      "product_name": "Camera",
+      "type": "returnable",
+      "status": "out-of-stock",
+      "quantity":8,
+      "date": "2023-06-30",
+      "price": 300.00
+    },
+    {
+      "product_name": "Printer",
+      "type": "non-returnable",
+      "status": "out-of-stock",
+      "quantity":9,
+      "date": "2023-07-12",
+      "price": 100.75
+    },
+    {
+      "product_name": "Fitness Tracker",
+      "type": "returnable",
+      "status": "out-of-stock",
+      "quantity":16,
+      "date": "2023-08-25",
+      "price": 45.99
+    },
+    {
+      "product_name": "Toaster",
+      "type": "nonreturnable",
+      "status": "available",
+      "quantity":10,
+      "date": "2023-09-14",
+      "price": 25.50
+    },
+    {
+      "product_name": "External Hard Drive",
+      "type": "returnable",
+      "status": "available",
+      "quantity":18,
+      "date": "2023-10-07",
+      "price": 80.00
+    }
+  ]
+  

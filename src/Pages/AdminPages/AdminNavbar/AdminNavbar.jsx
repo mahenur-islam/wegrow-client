@@ -1,20 +1,23 @@
+/* eslint-disable react/prop-types */
 // AdminNavbar.js
+import { Button } from 'flowbite-react';
 import { NavLink } from 'react-router-dom';
 
 const AdminNavbar = () => {
-  return (
+ return (
     <div>
-      <ul className="flex gap-3">
-        <li><NavLink to='/dashboard/assetlist'>Asset List</NavLink></li>
-        <li><NavLink to='/dashboard/adminhome' className='p-3 bg-gray-300'>Home</NavLink></li>
-        <li><NavLink to='/dashboard/addanasset'>Add Asset</NavLink></li>
-        <li><NavLink to='/dashboard/allrequests'>All Request</NavLink></li>
-        <li><NavLink to='/dashboard/customerrquestslist'>Customer Request</NavLink></li>
-        <li><NavLink to='/dashboard/myemployeelist'>My Employee</NavLink></li>
-        <li><NavLink to='/dashboard/profile'>Profile</NavLink></li>
+      <ul className="flex gap-3 fixed z-10 shadow-sm bg-white justify-center">
+        <li><NavLink to='/assetlist'>Asset List</NavLink></li>
+        <li><NavLink to='/adminhome' className='p-3 bg-gray-300'>Home</NavLink></li>
+        <li><NavLink to='/addanasset'>Add Asset</NavLink></li>
+        <li><NavLink to='/allrequests'>All Request</NavLink></li>
+        <li><NavLink to='/customerrquestslist'>Customer Request</NavLink></li>
+        <li><NavLink to='/myemployeelist'>My Employee</NavLink></li>
+        <li><NavLink to='/profile'>Profile</NavLink></li>
         <li>name</li>
         <li>profile</li>
-        <li>logout</li>
+        <li> <Button>Logout</Button>
+        </li>
       </ul>
     </div>
   );

@@ -1,21 +1,19 @@
+/* eslint-disable react/prop-types */
 import  { useState } from "react";
 
-const Filter = () => {
-  // State for filter options
+const Filter = ({ onFilterChange }) => {
   const [stockStatus, setStockStatus] = useState("all");
   const [assetType, setAssetType] = useState("all");
 
-  // Function to handle filter changes
   const handleStockStatusChange = (value) => {
     setStockStatus(value);
-    // Add logic to apply filters to your data
+    onFilterChange({ stockStatus: value, assetType });
   };
 
   const handleAssetTypeChange = (value) => {
     setAssetType(value);
-    // Add logic to apply filters to your data
+    onFilterChange({ stockStatus, assetType: value });
   };
-
   return (
     <div className="flex flex-col space-y-10  bg-gray-100 p-5 rounded-md">
       {/* Stock Status Filter */}

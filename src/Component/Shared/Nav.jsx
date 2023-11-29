@@ -1,26 +1,29 @@
 import { Link, NavLink } from "react-router-dom";
-import { Navbar } from "flowbite-react";
+import { Button, Navbar } from "flowbite-react";
 import { IoMdPeople } from "react-icons/io";
 import { FaPeopleRoof } from "react-icons/fa6";
 import { IoHomeOutline } from "react-icons/io5";
-// import { useContext } from "react";
-// import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import AdminNavbar from "../../Pages/AdminPages/AdminNavbar/AdminNavbar";
 const Nav = () => {
 
-  // const {user, logOut} = useContext(AuthContext);
-  // console.log(user)
+  const {user, logOut} = useContext(AuthContext);
+  console.log(user)
+  const isAdmin = true;
 
-  // const handleLogout = ()=>{
-  //   logOut()
-  //   .then(()=>{
+  const handleLogout = ()=>{
+    logOut()
+    .then(()=>{
 
-  //   })
-  //   .catch(error => console.log(error))
-  // }
+    })
+    .catch(error => console.log(error))
+  }
 
   return (
     <div>
-      <Navbar fluid rounded className="p-5 shadow-sm rounded-none">
+      {
+        isAdmin ? <><AdminNavbar></AdminNavbar></> : <><Navbar fluid rounded className="fixed p-5 shadow-sm rounded-none">
         <Navbar.Brand as={Link} href="https://flowbite-react.com">
           <img
             src="https://i.ibb.co/ZKPV5D9/Nothing.png"
@@ -39,7 +42,7 @@ const Nav = () => {
           <NavLink to="/employeesignup" className="flex justify-center items-center gap-1"><IoMdPeople className="text-xl" />Join as Employee</NavLink>
           <NavLink to="/adminsignup" className="flex justify-center items-center gap-1"><FaPeopleRoof className="text-xl"  />Join as HR/Admin</NavLink>
           {/* <NavLink to="/login" className="flex justify-center items-center gap-1"><Button>Login</Button></NavLink> */}
-          {/* {
+          {
             user ? <>
               <div className="flex justify-center items-center gap-3">
                 <p>{user?.displayName}</p>
@@ -47,10 +50,11 @@ const Nav = () => {
               </div>
               
             </> : <Navbar.Link href="/login"><Button>Login</Button></Navbar.Link>
-          } */}
+          }
           
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar></>
+      }
     </div>
   );
 };

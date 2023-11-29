@@ -1,14 +1,17 @@
+/* eslint-disable react/prop-types */
 import  { useState } from "react";
 
-const SortQuantity = () => {
+const SortQuantity = ({ onSortChange }) => {
   // State for sorting option
   const [sortOption, setSortOption] = useState("default");
 
   // Function to handle sorting changes
   const handleSortChange = (event) => {
-    setSortOption(event.target.value);
-    // Add logic to apply sorting to your data
+    const selectedSortOption = event.target.value;
+    setSortOption(selectedSortOption);
+    onSortChange(selectedSortOption);
   };
+
 
   return (
     <div className="mb-4">

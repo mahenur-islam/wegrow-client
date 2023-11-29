@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location =  useLocation();
 
-  const from = location.state?.from?.pathname || "/adminhome";
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogIn = (e)=>{
     e.preventDefault();
