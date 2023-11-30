@@ -18,6 +18,7 @@ import Signup from "../Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import AdminHome from "../Pages/AdminPages/AdminHome/AdminHome";
 import EmployeeList from "../Pages/AdminPages/EmployeeList/EmployeeList";
+import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam";
 
   export const router = createBrowserRouter([
     {
@@ -84,6 +85,16 @@ import EmployeeList from "../Pages/AdminPages/EmployeeList/EmployeeList";
             path:'/myemployeelist',
             element: <EmployeeList></EmployeeList>
         },
+        {
+            path:'/customrequests',
+            element: <CustomReq></CustomReq>
+        },
+        
+        {
+            path:'/myteam',
+            element: <MyTeam></MyTeam>
+        },
+        
 
       ]
     },

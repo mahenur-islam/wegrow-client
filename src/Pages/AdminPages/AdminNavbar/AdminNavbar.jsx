@@ -1,34 +1,28 @@
-/* eslint-disable react/prop-types */
-// AdminNavbar.js
-import { Button } from 'flowbite-react';
-import { NavLink } from 'react-router-dom';
-import useAuth from '../../../Hooks/useAuth';
+import { Button, Navbar } from 'flowbite-react';
+import React from 'react';
 
 const AdminNavbar = () => {
-  const { logOut } = useAuth()
-  const handleLogout = ()=>{
-    logOut()
-    .then(()=>{
-
-    })
-    .catch(error => console.log(error))
-  }
-
- return (
+  return (
     <div>
-      <ul className="flex gap-3 fixed z-10 shadow-sm bg-white justify-center">
-        <li><NavLink to='/assetlist'>Asset List</NavLink></li>
-        <li><NavLink to='/adminhome' className='p-3 bg-gray-300'>Home</NavLink></li>
-        <li><NavLink to='/addanasset'>Add Asset</NavLink></li>
-        <li><NavLink to='/allrequests'>All Request</NavLink></li>
-        <li><NavLink to='/customerrquestslist'>Customer Request</NavLink></li>
-        <li><NavLink to='/myemployeelist'>My Employee</NavLink></li>
-        <li><NavLink to='/profile'>Profile</NavLink></li>
-        <li>name</li>
-        <li>profile</li>
-        <li> <Button onClick={handleLogout}>Logout</Button>
-        </li>
-      </ul>
+      <Navbar fluid rounded>
+      <Navbar.Brand href="https://flowbite-react.com">
+        <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+      </Navbar.Brand>
+      <div className="flex md:order-2">
+        <Button>Get started</Button>
+        <Navbar.Toggle />
+      </div>
+      <Navbar.Collapse>
+        <Navbar.Link href="#" active>
+          Home
+        </Navbar.Link>
+        <Navbar.Link href="#">About</Navbar.Link>
+        <Navbar.Link href="#">Services</Navbar.Link>
+        <Navbar.Link href="#">Pricing</Navbar.Link>
+        <Navbar.Link href="#">Contact</Navbar.Link>
+      </Navbar.Collapse>
+    </Navbar>
     </div>
   );
 };

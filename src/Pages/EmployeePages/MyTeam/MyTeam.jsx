@@ -3,7 +3,7 @@ import UpcomingEvents from "./UpcomingEvents/UpcomingEvents";
 
 const MyTeam = () => {
     return (
-        <div>
+        <div className="space-y-10">
             <UpcomingEvents></UpcomingEvents>
             <TeamMember></TeamMember>
         </div>
