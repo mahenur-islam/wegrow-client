@@ -1,11 +1,12 @@
 import axios from "axios";
 
 export const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000"
+    baseURL: import.meta.env.VITE_API_URL,
+    withCredentials: true,
 })
 
 const useAxiosSecure = () => {
-    return axiosSecure
+    return axiosSecure;
 };
 
 export default useAxiosSecure; 

@@ -17,6 +17,7 @@ import CustomRequestList from "../Pages/AdminPages/CustomRequestList/CustomReque
 import Signup from "../Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import AdminHome from "../Pages/AdminPages/AdminHome/AdminHome";
+import EmployeeList from "../Pages/AdminPages/EmployeeList/EmployeeList";
 
   export const router = createBrowserRouter([
     {
@@ -81,7 +82,7 @@ import AdminHome from "../Pages/AdminPages/AdminHome/AdminHome";
         },
         {
             path:'/myemployeelist',
-            element: <AssetList></AssetList>
+            element: <EmployeeList></EmployeeList>
         },
 
       ]

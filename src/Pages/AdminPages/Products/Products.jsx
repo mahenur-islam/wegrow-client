@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Spinner, Table } from 'flowbite-react';
+import {  Table } from 'flowbite-react';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 import { useEffect, useState } from 'react';

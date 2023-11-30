@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 const EmployeeForm = () => {
-  const axiosSecure = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -30,16 +30,18 @@ const EmployeeForm = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
       toast.success("User created successfully");
-      updateUserProfile(data.name, data.photoURL)
+       const userInfo = {
+        name: data.name,
+        email: data.email,
+        role: "employee", 
+        companyName: data.companyName,
+        companyPhotoUrl: data.companyPhotoUrl,
+        birthDate: data.birthDate,
+      };
+      updateUserProfile(data.name, data.companyPhotoUrl)
         .then(() => {
-          const userInfo = {
-            name: data.name,
-            email: data.email,
-            companyName: data.companyName,
-            companyPhotoUrl: data.companyPhotoUrl,
-            birthDate: data.birthDate
-          };
-          axiosSecure.post("/users", userInfo).then((res) => {
+              //user info here if needed
+          axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
               console.log('user added to the database')
               reset();
@@ -112,7 +114,7 @@ const EmployeeForm = () => {
               icon={BiLogoCodepen}
               placeholder=""
               name="companyPhotoUrl"
-              {...register("companyPhotoUrl", { required: true })}
+              {...register("photoURL", { required: true })}
             />
             {errors.companyPhotoUrl && (
               <span className="text-red-600">This field is required</span>
@@ -205,3 +207,5 @@ const EmployeeForm = () => {
 };
 
 export default EmployeeForm;
+
+

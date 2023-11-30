@@ -10,7 +10,7 @@ const Nav = () => {
 
   const {user, logOut} = useContext(AuthContext);
   console.log(user)
-  const isAdmin = true;
+  const isAdmin = false;
 
   const handleLogout = ()=>{
     logOut()
@@ -23,7 +23,7 @@ const Nav = () => {
   return (
     <div>
       {
-        isAdmin ? <><AdminNavbar></AdminNavbar></> : <><Navbar fluid rounded className="fixed p-5 shadow-sm rounded-none">
+        isAdmin ? <><AdminNavbar></AdminNavbar></> : <><Navbar fluid rounded className="p-5 shadow-sm rounded-none">
         <Navbar.Brand as={Link} href="https://flowbite-react.com">
           <img
             src="https://i.ibb.co/ZKPV5D9/Nothing.png"
