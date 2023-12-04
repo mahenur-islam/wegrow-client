@@ -1,13 +1,13 @@
-import { Button, Navbar } from 'flowbite-react';
-import { FaPeopleRoof } from 'react-icons/fa6';
-import { IoMdPeople } from 'react-icons/io';
-import { IoHomeOutline } from 'react-icons/io5';
-import { Link, NavLink } from 'react-router-dom';
+import { Button, Navbar } from "flowbite-react";
+import { FaPeopleRoof } from "react-icons/fa6";
+import { IoMdPeople } from "react-icons/io";
+import { IoHomeOutline } from "react-icons/io5";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
-    return (
-        <div>
-            <Navbar fluid rounded className="p-5 shadow-sm rounded-none">
+  return (
+    <div>
+      <Navbar fluid rounded className="p-5 shadow-sm rounded-none">
         <Navbar.Brand as={Link} href="https://flowbite-react.com">
           <img
             src="https://i.ibb.co/ZKPV5D9/Nothing.png"
@@ -20,12 +20,33 @@ const NavBar = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <NavLink to="/" active= 'true' className="flex justify-center items-center gap-1">
-          <IoHomeOutline className="text-lg" /> Home
+          <NavLink
+            to="/"
+            active="true"
+            className="flex justify-center items-center gap-1"
+          >
+            <IoHomeOutline className="text-lg" /> Home
           </NavLink>
-          <NavLink to="/employeesignup" className="flex justify-center items-center gap-1"><IoMdPeople className="text-xl" />Join as Employee</NavLink>
-          <NavLink to="/adminsignup" className="flex justify-center items-center gap-1"><FaPeopleRoof className="text-xl"  />Join as HR/Admin</NavLink>
-          <NavLink to="/login" className="flex justify-center items-center gap-1"><Button>Login</Button></NavLink>
+          <NavLink
+            to="/employeesignup"
+            className="flex justify-center items-center gap-1"
+          >
+            <IoMdPeople className="text-xl" />
+            Join as Employee
+          </NavLink>
+          <NavLink
+            to="/adminsignup"
+            className="flex justify-center items-center gap-1"
+          >
+            <FaPeopleRoof className="text-xl" />
+            Join as HR/Admin
+          </NavLink>
+          <NavLink
+            to="/login"
+            className="flex justify-center items-center gap-1"
+          >
+            <Button>Login</Button>
+          </NavLink>
           {/* {
             user ? <>
               <div className="flex justify-center items-center gap-3">
@@ -35,11 +56,10 @@ const NavBar = () => {
               
             </> : <Navbar.Link href="/login"><Button>Login</Button></Navbar.Link>
           } */}
-          
         </Navbar.Collapse>
       </Navbar>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default NavBar;

@@ -19,6 +19,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminHome from "../Pages/AdminPages/AdminHome/AdminHome";
 import EmployeeList from "../Pages/AdminPages/EmployeeList/EmployeeList";
 import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam";
+import AddEmployee from "../Pages/AdminPages/AddEmployee/AddEmployee";
 
   export const router = createBrowserRouter([
     {
@@ -54,40 +55,44 @@ import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam";
             element: <PrivateRoute><Profile></Profile></PrivateRoute>
         },
         {
-            path:'/customrequest',
+            path:'/custom-request',
             element: <CustomReq></CustomReq>
         },
         {
-            path:'/upcomingevents',
+            path:'/upcoming-events',
             element: <UpcomingEvents></UpcomingEvents>
         },
         {
-            path:'/teammember',
+            path:'/team-member',
             element: <TeamMember></TeamMember>
         },
         {
-            path:'/addanasset',
+            path:'/add-an-asset',
             element: <AddAsset></AddAsset>
         },
         {
-            path:'/allrequests',
+            path:'/all-requests',
             element: <AllRequest></AllRequest>
         },
         {
-            path:'/customerrquestslist',
+            path:'/custom-requests-list',
             element: <CustomRequestList></CustomRequestList>
         },
         {
-            path:'/assetlist',
+            path:'/asset-list',
             element: <AssetList></AssetList>
         },
         {
-            path:'/myemployeelist',
+            path:'/my-employee-list',
             element: <EmployeeList></EmployeeList>
         },
         {
             path:'/customrequests',
             element: <CustomReq></CustomReq>
+        },
+        {
+            path:'/add-employee',
+            element: <AddEmployee></AddEmployee>
         },
         
         {

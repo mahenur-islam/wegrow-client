@@ -7,26 +7,27 @@ import EmployeeNavbar from "../../Pages/EmployeePages/EmployeeNavbar/EmployeeNav
 import NavBar from "../NavBar.jsx/NavBar";
 const Nav = () => {
 
-  const {user} = useContext(AuthContext);
+  const {user, logOut} = useContext(AuthContext);
+
 
 
   const isAdmin = true;
   
 
 
-  // const handleLogout = ()=>{
-  //   logOut()
-  //   .then(()=>{
+  const handleLogout = ()=>{
+    logOut()
+    .then(()=>{
 
-  //   })
-  //   .catch(error => console.log(error))
-  // }
+    })
+    .catch(error => console.log(error))
+  }
 
   return (
     <div>
       {
         user ? <div>{
-          isAdmin ? <><AdminNavbar /></> : <><EmployeeNavbar /></>
+          isAdmin ? <><AdminNavbar handleLogout={handleLogout} /></> : <><EmployeeNavbar /></>
         }</div> : <div><NavBar /></div>
       }
     </div>
