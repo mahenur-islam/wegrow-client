@@ -2,7 +2,9 @@ import { Button, Label, Select, TextInput, Textarea } from "flowbite-react";
 import { SiNamecheap } from "react-icons/si";
 import { BiLogoCodepen } from "react-icons/bi";
 import toast from "react-hot-toast";
+import useAuth from "../../../Hooks/useAuth";
 const CustomReq = () => {
+  const { user } = useAuth();
 
   const handleCustomRequest = event => {
     event.preventDefault();
@@ -13,6 +15,8 @@ const CustomReq = () => {
     const assetPhotoUrl = form.assetPhotoUrl.value;
     const assetDetails = form.assetDetails.value;
     const additionalInfo = form.additionalInfo.value;
+    const userEmail = user?.email;
+    const userDisplayName = user?.displayName;
 
    const customRequestInfo = {
     assetName,
@@ -20,7 +24,10 @@ const CustomReq = () => {
     assetType,
     assetPhotoUrl,
     assetDetails,
-    additionalInfo
+    additionalInfo,
+    userDisplayName,
+    userEmail,
+    addedAt: new Date().toISOString().split('T')[0]
    }
 
    console.log(customRequestInfo);

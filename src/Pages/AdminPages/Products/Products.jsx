@@ -82,7 +82,7 @@ const Products = ({ filters, sortOption, searchQuery}) => {
               <Table.Cell>${product?.price}</Table.Cell>
               <Table.Cell className='flex gap-4'>
                 <RiDeleteBin6Line className='text-xl cursor-pointer hover:scale-110 hover:text-red-700' onClick={()=>{handleDelete(product._id)}} />
-                <NavLink to={`/edit-product/${product._id}`}><FaRegEdit className='text-xl'/></NavLink>
+                <NavLink to={`/edit-product/${product._id}`}><FaRegEdit className='text-xl cursor-pointer hover:scale-110 hover:text-blue-700'/></NavLink>
               </Table.Cell>
             </Table.Row>
           ))): <div className='min-h-[calc(100vh-450px)] flex items-center justify-center'><Heading center={false} title={"No products found"} subTitle={"please add some product first"}/></div>}
