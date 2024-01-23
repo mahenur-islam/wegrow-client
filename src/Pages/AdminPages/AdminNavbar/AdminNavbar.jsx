@@ -1,46 +1,55 @@
 /* eslint-disable react/prop-types */
-import { Button, Navbar } from 'flowbite-react';
-import { NavLink } from 'react-router-dom';
-
-const AdminNavbar = ({handleLogout}) => {
+import { Button, Navbar } from "flowbite-react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import { axiosSecure } from "../../../Hooks/useAxiosSecure";
+import { NavLink } from "react-router-dom";
+const AdminNavbar = ({ handleLogout }) => {
+  useEffect(() => {
+    axiosSecure.get("http://localhost:5000/users").then((data) => {
+      console.log(data.data.users[0].companyName);
+    });
+  }, []);
+  const { user } = useContext(AuthContext);
   return (
-    <div>
-      <Navbar fluid rounded>
-        <Navbar.Brand as={NavLink} to="/">
-          <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        </Navbar.Brand>
-        <div className="flex md:order-2">
-          <Button onClick={handleLogout}>Logout</Button>
-          <Navbar.Toggle />
-        </div>
-        <Navbar.Collapse>
-          <NavLink to="/" className="navbar-link">
-            Home
-          </NavLink>
-          <NavLink to="/add-an-asset" className="navbar-link">
-            Add an Asset
-          </NavLink>
-          <NavLink to="/asset-list" className="navbar-link">
-            Asset List
-          </NavLink>
-          <NavLink to="/all-requests" className="navbar-link">
-            All Requests
-          </NavLink>
-          <NavLink to="/custom-requests-list" className="navbar-link">
-            Custom Requests List
-          </NavLink>
-          <NavLink to="/my-employee-list" className="navbar-link">
-            My Employee List
-          </NavLink>
-          <NavLink to="/add-employee" className="navbar-link">
-            Add an Employee
-          </NavLink>
-          <NavLink to="/profile" className="navbar-link">
-            Profile
-          </NavLink>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
+    <Navbar fluid className="bg-gray-100 mb-20 p-4">
+      <Navbar.Brand href="https://flowbite-react.com">
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+        weGrow 
+        </span>
+      </Navbar.Brand>
+      <div className="flex md:order-2">
+        <Navbar.Toggle />
+      </div>
+      <Navbar.Collapse className="mt-2">
+      <ul className="flex flex-col justify-center items-center gap-6 md:flex-row">
+      <Navbar.Link href="/admin-home" active>
+         Admin Home
+        </Navbar.Link>
+        <li><NavLink to="/asset-list">Asset List</NavLink></li>
+          <li><NavLink to="/add-an-asset">Add an Asset</NavLink></li>
+          <li><NavLink to="/all-requests">All Requests</NavLink></li>
+          <li><NavLink to="/custom-requests-list">Custom Request List</NavLink></li>
+          <li><NavLink to="/my-employee-list">My Employee List</NavLink></li>
+          <li><NavLink to="/add-an-employee">Add an Employee</NavLink></li>
+          <li><NavLink to="/profile">My Profile</NavLink></li>
+          {user ? (
+          <>
+            <li className="flex justify-center items-center gap-3">
+              <p>{user?.displayName}</p>
+              <Button outline onClick={handleLogout}>
+                Logout
+              </Button>
+            </li>
+          </>
+        ) : (
+          <Navbar.Link href="/login">
+            <Button>Login</Button>
+          </Navbar.Link>
+        )}
+      </ul>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 

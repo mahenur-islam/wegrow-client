@@ -28,18 +28,18 @@ const AssetList = () => {
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="flex items-center justify-center h-full">
-          <div className="flex flex-col md:flex-row items-center gap-2">
-            <TextInput
-              id="base"
-              type="text"
-              sizing="md"
-              placeholder="Search here . . ."
-              className="w-96 shadow-xl "
-              value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <Button  onClick={handleSearch}>Search</Button>
-          </div>
+        <div className="flex flex-col md:flex-row items-center gap-2">
+        <TextInput
+          id="base"
+          type="text"
+          sizing="md"
+          placeholder="Search here . . ."
+          className="w-96 shadow-xl "
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <Button onClick={handleSearch}>Search</Button>
+      </div>
         </div>
       </div>
 
@@ -49,7 +49,7 @@ const AssetList = () => {
         <Filter onFilterChange={handleFilterChange}></Filter>
       </div>
       <div className="col-span-8 shadow-xl p-3">
-        <Products filters={filters} sortOption={sortOption}></Products>
+        <Products filters={filters} sortOption={sortOption} searchQuery={searchQuery}></Products>
       </div>
 
         {/* <------- Sorting Section ---------> */}

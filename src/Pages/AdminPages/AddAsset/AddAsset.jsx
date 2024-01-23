@@ -1,31 +1,69 @@
 import { Button, Label, Select, TextInput } from "flowbite-react";
 import { SiNamecheap } from "react-icons/si";
-import { imageUpload } from "../../../api/utils";
+// import { imageUpload } from "../../../api/utils";
 import useAuth from "../../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { BiLogoCodepen } from "react-icons/bi";
 
 const AddAsset = () => {
-  const navigate = useNavigate('/');
+  const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
+
   const handleAddProduct = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const assetName = form.assetName.value;
+    const price = form.price.value;
+    const quantity = form.quantity.value;
     const type = form.type.value;
     const availability = form.availability.value;
-    const image = form.productPhotoUrl.files[0];
-    const imageData = await imageUpload(image);
-    console.log(imageData, availability, type, name, user?.email);
-    if(user && user.email){
-      // send item to database 
-        // email: user.email;
-    }else{
-      toast.warning('Login First');
-      navigate('/login', {state: {from: location}});
+    const imageUrl = form.imageUrl.value;
+  
+  
+    const userEmail = user?.email;
+  
+    if (userEmail) {
+      const formData = {
+        assetName,
+        price,
+        type,
+        quantity,
+        availability,
+        imageUrl,
+        userEmail,
+        addedAt: new Date().toISOString().split('T')[0]
+      }
+  
+      try {
+        const response = await fetch("http://localhost:5000/products", {
+          method: "POST",
+          headers:{
+            'content-type': 'application/json'
+          },
+          body:JSON.stringify(formData)
+    
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok) {
+          toast.success(data.message);
+          // Additional logic after successful product addition
+        } else {
+          toast.error(data.message || "Failed to add product");
+        }
+      } catch (error) {
+        console.error("Error adding product:", error);
+        toast.error("Failed to add product");
+      }
+    } else {
+      toast.warning("Login First");
+      navigate("/login", { state: { from: location } });
     }
   };
+  
 
   return (
     <div>
@@ -36,7 +74,7 @@ const AddAsset = () => {
         }}
       >
         <form
-          className="flex max-w-md flex-col gap-4 bg-white p-10 rounded-lg shadow-2xl shadow-red-300 w-[600px] ml-10"
+          className="flex max-w-lg flex-col gap-4 bg-white p-10 rounded-lg shadow-2xl shadow-red-300 w-[600px] ml-10"
           onSubmit={handleAddProduct}
         >
           <h1 className="text-xl md:text-2xl font-semibold">Add A Product</h1>
@@ -45,11 +83,24 @@ const AddAsset = () => {
               <Label htmlFor="name" value="Name *" />
             </div>
             <TextInput
-              id="name"
+              id="assetName"
               type="text"
               icon={SiNamecheap}
               placeholder=""
-              name="name"
+              name="assetName"
+              required
+            />
+          </div>
+         <div className="grid grid-cols-2 gap-3">
+         <div>
+            <div className="mb-2 block">
+              <Label htmlFor="price" value="Price *" />
+            </div>
+            <TextInput
+              id="price"
+              type="text"
+              placeholder="$"
+              name="price"
               required
             />
           </div>
@@ -62,10 +113,23 @@ const AddAsset = () => {
               <option>Non-returnable</option>
             </Select>
           </div>
+         </div>
+         <div>
+            <div className="mb-2 block">
+              <Label htmlFor="quantity" value="Quantity *" />
+            </div>
+            <TextInput
+              id="quantity"
+              type="number"
+              placeholder="Enter Quantity"
+              name="quantity"
+              required
+            />
+          </div>
+         
           <div className="max-w-md">
             <div className="mb-2 block">
-              <Label htmlFor="availability" value="Select Availability" />{" "}
-              {/* Fix here */}
+              <Label htmlFor="availability" value="Select Availability" />
             </div>
             <Select name="availability" required>
               <option>Available</option>
@@ -77,12 +141,12 @@ const AddAsset = () => {
               <Label htmlFor="productPhotoUrl" value="Image *" />
             </div>
             <TextInput
-              type="file"
-              accept="image/*"
-              placeholder=""
-              name="productPhotoUrl"
-              required
-            />
+                type="text"
+                icon={BiLogoCodepen}
+                placeholder=""
+                name="imageUrl"
+                required
+              />
           </div>
           <Button type="submit" outline>
             Add Product

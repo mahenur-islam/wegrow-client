@@ -20,6 +20,10 @@ import AdminHome from "../Pages/AdminPages/AdminHome/AdminHome";
 import EmployeeList from "../Pages/AdminPages/EmployeeList/EmployeeList";
 import MyTeam from "../Pages/EmployeePages/MyTeam/MyTeam";
 import AddEmployee from "../Pages/AdminPages/AddEmployee/AddEmployee";
+import MyAssets from "../Pages/EmployeePages/MyAssets/MyAssets";
+import RequestAsset from "../Pages/EmployeePages/RequestAsset/RequestAsset";
+import EmployeeHome from "../Pages/EmployeePages/EmployeeHome/EmployeeHome";
+import EditProduct from "../Pages/AdminPages/EditProduct/EditProduct";
 
   export const router = createBrowserRouter([
     {
@@ -47,7 +51,7 @@ import AddEmployee from "../Pages/AdminPages/AddEmployee/AddEmployee";
             element: <AdminForm></AdminForm>
         }, 
         {
-            path:'/adminhome',
+            path:'/admin-home',
             element: <AdminHome></AdminHome>
         }, 
         {
@@ -56,51 +60,79 @@ import AddEmployee from "../Pages/AdminPages/AddEmployee/AddEmployee";
         },
         {
             path:'/custom-request',
-            element: <CustomReq></CustomReq>
+            element: <PrivateRoute><CustomReq></CustomReq></PrivateRoute>
         },
         {
             path:'/upcoming-events',
-            element: <UpcomingEvents></UpcomingEvents>
+            element: <PrivateRoute><UpcomingEvents></UpcomingEvents></PrivateRoute>
         },
         {
             path:'/team-member',
-            element: <TeamMember></TeamMember>
+            element: <PrivateRoute><TeamMember></TeamMember></PrivateRoute>
         },
         {
             path:'/add-an-asset',
-            element: <AddAsset></AddAsset>
+            element: <PrivateRoute><AddAsset></AddAsset></PrivateRoute>
         },
         {
             path:'/all-requests',
-            element: <AllRequest></AllRequest>
+            element: <PrivateRoute><AllRequest></AllRequest></PrivateRoute>
         },
         {
             path:'/custom-requests-list',
-            element: <CustomRequestList></CustomRequestList>
+            element: <PrivateRoute><CustomRequestList></CustomRequestList></PrivateRoute>
         },
         {
             path:'/asset-list',
-            element: <AssetList></AssetList>
+            element: <PrivateRoute><AssetList></AssetList></PrivateRoute>
+        },
+        {
+            path:'/edit-product/:id',
+            element: <PrivateRoute><EditProduct></EditProduct></PrivateRoute>,
+            loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
         },
         {
             path:'/my-employee-list',
-            element: <EmployeeList></EmployeeList>
+            element:<PrivateRoute> <EmployeeList></EmployeeList></PrivateRoute>
         },
         {
-            path:'/customrequests',
-            element: <CustomReq></CustomReq>
+            path:'/custom-request',
+            element: <PrivateRoute><CustomReq></CustomReq></PrivateRoute>
         },
         {
-            path:'/add-employee',
-            element: <AddEmployee></AddEmployee>
+            path:'/add-an-employee',
+            element: <PrivateRoute><AddEmployee></AddEmployee></PrivateRoute>
+        },
+        {
+            path:'/profile',
+            element: <PrivateRoute><Profile></Profile></PrivateRoute>
         },
         
+        //employee routes 
         {
-            path:'/myteam',
-            element: <MyTeam></MyTeam>
+            path:'/employee-home',
+            element: <PrivateRoute><EmployeeHome></EmployeeHome></PrivateRoute>
         },
-        
-
+        {
+            path:'/my-team',
+            element: <PrivateRoute><MyTeam></MyTeam></PrivateRoute>
+        },
+        {
+            path:'/my-assets',
+            element: <PrivateRoute><MyAssets></MyAssets></PrivateRoute>
+        },
+        {
+            path:'/request-for-an-asset',
+            element:<PrivateRoute><RequestAsset></RequestAsset></PrivateRoute>
+        },
+        {
+            path:'/make-a-custom-request',
+            element:<PrivateRoute><CustomReq></CustomReq></PrivateRoute>
+        },
+        {
+            path:'/employee-profile',
+            element: <PrivateRoute><Profile></Profile></PrivateRoute>
+        }
       ]
     },
   ]);

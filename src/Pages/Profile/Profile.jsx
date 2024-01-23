@@ -1,14 +1,15 @@
+import useAuth from "../../Hooks/useAuth";
 const Profile = () => {
-  // Assuming you have user data, replace this with actual user data
+  const {auth} = useAuth()
+  console.log(auth);
   const userData = {
     profilePicture: "https://i.ibb.co/rfHpRjg/admin2.png",
     name: "John Doe",
     email: "john.doe@example.com",
-    dateOfBirth: "1990-01-01", // Replace with the actual date of birth
+    dateOfBirth: "1990-01-01", 
   };
 
   const handleUpdateProfile = () => {
-    // Add your update profile logic here
     console.log("Update profile button clicked");
   };
 

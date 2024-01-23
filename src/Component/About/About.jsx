@@ -8,8 +8,8 @@ const About = () => {
         />
         <div className="absolute inset-0 flex items-center justify-start p-8">
           <div>
-            <h1 className="text-4xl font-bold mb-4">Website Title</h1>
-            <p className="text-lg">Your description goes here.</p>
+            <h1 className="text-4xl font-bold mb-4">We<span className="text-red-800">Grow</span></h1>
+            <p className="text-lg">description goes here.</p>
           </div>
         </div>
       </div>

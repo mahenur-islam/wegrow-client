@@ -1,4 +1,5 @@
 import { Button, Carousel } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -12,7 +13,7 @@ const Banner = () => {
           />
           <div className="p-8">
             <Button outline className="text-xl">
-              Join as HR/Admin
+             <Link to="/adminform"> Join as HR/Admin</Link>
             </Button>
           </div>
         </div>
@@ -24,7 +25,7 @@ const Banner = () => {
           />
           <div className="p-8">
             <Button outline className="text-xl">
-              Join as Employee
+             <Link to="/employeeform">Join as Employee</Link>
             </Button>
           </div>
         </div>

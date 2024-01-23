@@ -41,7 +41,7 @@ const Package = () => {
           </ul>
           <button
             type="button"
-            className="inline-flex w-full justify-center rounded-lg bg-gray-800  px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800  dark:hover:ring-cyan-900"
+            className="inline-flex  w-full justify-center rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-cyan-800  dark:hover:ring-cyan-900 hover:text-white"
           >
             Choose plan
           </button>
