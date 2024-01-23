@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button, Navbar } from "flowbite-react";
+import { Avatar, Button, Navbar } from "flowbite-react";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
@@ -11,6 +11,7 @@ const AdminNavbar = ({ handleLogout }) => {
     });
   }, []);
   const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <Navbar fluid className="bg-gray-100 mb-20 p-4">
       <Navbar.Brand href="https://flowbite-react.com">
@@ -36,6 +37,7 @@ const AdminNavbar = ({ handleLogout }) => {
           {user ? (
           <>
             <li className="flex justify-center items-center gap-3">
+            <Avatar img={user?.photoURL} rounded/>
               <p>{user?.displayName}</p>
               <Button outline onClick={handleLogout}>
                 Logout

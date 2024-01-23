@@ -114,7 +114,7 @@ const EmployeeForm = () => {
               icon={BiLogoCodepen}
               placeholder=""
               name="companyPhotoUrl"
-              {...register("photoURL", { required: true })}
+              {...register("companyPhotoUrl", { required: true })}
             />
             {errors.companyPhotoUrl && (
               <span className="text-red-600">This field is required</span>
@@ -186,7 +186,7 @@ const EmployeeForm = () => {
           <Button type="submit" outline>
             Signup
           </Button>
-          <div>
+          <div className="cursor-pointer">
                <SocialLogin></SocialLogin>
           </div>
           <h2>

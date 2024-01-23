@@ -13,6 +13,7 @@ const EmployeeList = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
+      
       return res.data;
     },
   });
@@ -53,7 +54,7 @@ const EmployeeList = () => {
                 <img
                   alt="Bonnie image"
                   height="96"
-                  src={member.photoUrl}
+                  src={member.companyPhotoUrl}
                   width="96"
                   className="mb-3 rounded-full shadow-lg"
                 />

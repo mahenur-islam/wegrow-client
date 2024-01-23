@@ -101,7 +101,8 @@ import EditProduct from "../Pages/AdminPages/EditProduct/EditProduct";
         },
         {
             path:'/add-an-employee',
-            element: <PrivateRoute><AddEmployee></AddEmployee></PrivateRoute>
+            element: <PrivateRoute><AddEmployee></AddEmployee></PrivateRoute>,
+            loader:()=> fetch('http://localhost:5000/users')
         },
         {
             path:'/profile',
