@@ -1,19 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import AdminNavbar from "../../Pages/AdminPages/AdminNavbar/AdminNavbar";
+import EmployeeNavbar from "../../Pages/EmployeePages/EmployeeNavbar/EmployeeNavbar";
 import NavBar from "../NavBar.jsx/NavBar";
-import EmployeeNavbar from "../../Pages/EmployeePages/EmployeeNavbar/EmployeeNavabr";
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [isAdmin, setIsAdmin] = useState(false);
+  console.log(user);
+  const [userRole, setUserRole] = useState('employee');
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        if (user) {
-          const userIsAdmin = true;
-          setIsAdmin(userIsAdmin);
+        if (user && user.role) {
+          setUserRole(user.role);
         }
       } catch (error) {
         console.error("Error fetching user role:", error);
@@ -35,7 +35,7 @@ const Nav = () => {
     <div>
       {user ? (
         <div>
-          {isAdmin ? (
+          {userRole === "admin" ? (
             <AdminNavbar handleLogout={handleLogout} />
           ) : (
             <EmployeeNavbar handleLogout={handleLogout} />
