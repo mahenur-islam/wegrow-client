@@ -8,7 +8,7 @@ const CustomRequestList = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/custom-request')
+    fetch('https://wegrow-server.vercel.app/custom-request')
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -19,7 +19,7 @@ const CustomRequestList = () => {
   //handle delete
   const handleDelete = async (_id) => {
     try {
-      const response = await fetch(`http://localhost:5000/custom-request/${_id}`, {
+      const response = await fetch(`https://wegrow-server.vercel.app/custom-request/${_id}`, {
         method: 'DELETE',
       });
 

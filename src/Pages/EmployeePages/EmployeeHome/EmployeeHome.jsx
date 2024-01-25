@@ -4,7 +4,7 @@ import MyPendingRequest from "./MyPendingRequest";
 
 const EmployeeHome = () => {
     return (
-        <div>
+        <div className="my-10 space-y-10">
            <MyCustomRequest></MyCustomRequest>
            <MyPendingRequest></MyPendingRequest>
            <MyMonthlyRequest></MyMonthlyRequest>

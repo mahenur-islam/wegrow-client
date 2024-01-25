@@ -1,7 +1,9 @@
+import Heading from "../../../Component/Heading/Heading";
+
 const MyMonthlyRequest = () => {
     return (
         <div>
-            My MyMonthly Request
+            <Heading title={'My Monthly Request'}></Heading>
         </div>
     );
 };

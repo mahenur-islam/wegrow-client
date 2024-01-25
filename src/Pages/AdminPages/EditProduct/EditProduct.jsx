@@ -23,7 +23,7 @@ const EditProduct = () => {
 
   const handleEdit = () => {
     // Send a PUT request to update the product
-    fetch(`http://localhost:5000/products/${_id}`, {
+    fetch(`https://wegrow-server.vercel.app/products/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

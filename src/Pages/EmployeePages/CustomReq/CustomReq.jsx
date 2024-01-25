@@ -33,7 +33,7 @@ const CustomReq = () => {
    console.log(customRequestInfo);
 
    //send custom request to the server
-   fetch('http://localhost:5000/custom-request', {
+   fetch('https://wegrow-server.vercel.app/custom-request', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

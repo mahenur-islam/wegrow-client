@@ -1,7 +1,9 @@
+import Heading from "../../../Component/Heading/Heading";
+
 const MyPendingRequest = () => {
     return (
         <div>
-            My MyPending Request
+            <Heading title={'My Pending Request'}></Heading>
         </div>
     );
 };

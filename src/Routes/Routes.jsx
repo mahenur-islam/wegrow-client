@@ -89,7 +89,7 @@ import EditProduct from "../Pages/AdminPages/EditProduct/EditProduct";
         {
             path:'/edit-product/:id',
             element: <PrivateRoute><EditProduct></EditProduct></PrivateRoute>,
-            loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
+            loader: ({params})=> fetch(`https://wegrow-server.vercel.app/products/${params.id}`)
         },
         {
             path:'/my-employee-list',
@@ -102,7 +102,7 @@ import EditProduct from "../Pages/AdminPages/EditProduct/EditProduct";
         {
             path:'/add-an-employee',
             element: <PrivateRoute><AddEmployee></AddEmployee></PrivateRoute>,
-            loader:()=> fetch('http://localhost:5000/users')
+            loader:()=> fetch('https://wegrow-server.vercel.app/users')
         },
         {
             path:'/profile',

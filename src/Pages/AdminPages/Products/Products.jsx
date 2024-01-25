@@ -11,7 +11,7 @@ const Products = ({ filters, sortOption, searchQuery}) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    fetch('https://wegrow-server.vercel.app/products')
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -41,7 +41,7 @@ const Products = ({ filters, sortOption, searchQuery}) => {
    // Handle delete
    const handleDelete = async (_id) => {
     try {
-      const response = await fetch(`http://localhost:5000/products/${_id}`, {
+      const response = await fetch(`https://wegrow-server.vercel.app/products/${_id}`, {
         method: 'DELETE',
       });
 

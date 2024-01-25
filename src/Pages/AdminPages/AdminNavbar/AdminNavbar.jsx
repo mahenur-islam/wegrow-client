@@ -6,7 +6,7 @@ import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 import { NavLink } from "react-router-dom";
 const AdminNavbar = ({ handleLogout }) => {
   useEffect(() => {
-    axiosSecure.get("http://localhost:5000/users").then((data) => {
+    axiosSecure.get("https://wegrow-server.vercel.app/users").then((data) => {
       console.log(data.data.users[0].companyName);
     });
   }, []);

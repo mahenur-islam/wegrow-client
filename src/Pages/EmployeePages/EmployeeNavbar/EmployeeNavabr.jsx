@@ -6,7 +6,7 @@ import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 const EmployeeNavbar = ({handleLogout}) => {
   useEffect(()=>{
-    axiosSecure.get("http://localhost:5000/users")
+    axiosSecure.get("https://wegrow-server.vercel.app/users")
     .then(data => {
       console.log(data.data.users[0].companyName);
     })
